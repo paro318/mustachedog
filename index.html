@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BLUPPO - The Future of Memecoins</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+      :root {
+        --primary-color: #8a2be2;
+        --secondary-color: #ffd700;
+        --text-color: #ffffff;
+        --background-color: #1a1a2e;
+        --accent-color: #ff69b4;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Poppins', sans-serif;
+        color: var(--text-color);
+        line-height: 1.6;
+        overflow-x: hidden;
+        background-color: var(--background-color);
+      }
+
+      .section {
+        position: relative;
+        overflow: hidden;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+      }
+      .hero {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .section-content {
+        position: relative;
+        z-index: 2;
+        margin: 0 auto;
+        background-color: rgba(0, 0, 0, 0.9);
+        border-radius: 10px;
+        padding: 2rem;
+        box-shadow: 0 0 20px rgba(138, 43, 226, 0.5);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: fit-content;
+      }
+      .hero h1 {
+        font-size: 3rem;
+      }
+      .hero-content {
+        border: 2px solid var(--secondary-color);
+        border-radius: 100%;
+        margin-top: 3rem;
+      }
+      .sliding-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 500%;
+        height: 100%;
+        display: flex;
+        animation: slide 60s linear infinite;
+        opacity: 0.5;
+      }
+      .contract-address-container {
+        display: flex;
+        flex-direction: column;
+        margin-top: 1rem;
+
+        justify-content: center;
+        align-items: center;
+      }
+      .sliding-background img {
+        width: 20%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      @keyframes slide {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-80%);
+        }
+      }
+
+      .reverse .sliding-background {
+        animation-direction: reverse;
+      }
+
+      .split-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+      }
+
+      .split-background .left,
+      .split-background .right {
+        width: 50%;
+        height: 200%;
+        overflow: hidden;
+        opacity: 0.5;
+      }
+
+      .split-background img {
+        width: 100%;
+        height: 50%;
+        object-fit: cover;
+      }
+
+      .features h2,
+      .blupponomics h2,
+      .community h2 {
+        font-size: 2.3rem;
+      }
+      .features h3,
+      .blupponomics h3,
+      .community h3 {
+        font-size: 1.7rem;
+        text-align: center;
+      }
+      .features p,
+      .blupponomics p,
+      .community p {
+        text-align: center;
+      }
+      .features .split-background .left {
+        animation: slideUp 30s linear infinite;
+      }
+
+      .features .split-background .right {
+        animation: slideDown 30s linear infinite;
+      }
+
+      .blupponomics .split-background .left {
+        animation: slideDown 30s linear infinite;
+      }
+
+      .blupponomics .split-background .right {
+        animation: slideUp 30s linear infinite;
+      }
+
+      @keyframes slideUp {
+        0% {
+          transform: translateY(0);
+        }
+        100% {
+          transform: translateY(-50%);
+        }
+      }
+
+      @keyframes slideDown {
+        0% {
+          transform: translateY(-50%);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin-bottom: 1rem;
+        color: var(--secondary-color);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        animation: glow 2s ease-in-out infinite alternate;
+      }
+
+      @keyframes glow {
+        from {
+          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        to {
+          text-shadow: 0 0 10px var(--accent-color),
+            0 0 20px var(--accent-color);
+        }
+      }
+
+      p {
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 0.7rem 1.5rem;
+        background-color: var(--secondary-color);
+        color: var(--background-color);
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        margin: 0.5rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn:hover {
+        background-color: var(--primary-color);
+        color: var(--text-color);
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+      }
+
+      .btn::after {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: rgba(255, 255, 255, 0.2);
+        transform: rotate(45deg);
+        transition: all 0.3s ease;
+      }
+
+      .btn:hover::after {
+        left: 100%;
+        top: 100%;
+      }
+
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        background-color: rgba(0, 0, 0, 0.8);
+        padding: 1rem 0;
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 auto;
+        padding: 0 30px;
+      }
+
+      .logo {
+        width: 90px;
+        height: 90px;
+        transition: all 0.3s ease;
+      }
+
+      .logo:hover {
+        transform: scale(1.1);
+      }
+
+      .logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+      }
+
+      .nav-links a {
+        color: var(--text-color);
+        text-decoration: none;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .nav-links a::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--secondary-color);
+        transition: width 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        color: var(--secondary-color);
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+      .features-content,
+      .blupponomics-content,
+      .community-content {
+        border: 2px solid var(--accent-color);
+        border-radius: 2rem;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .feature-item {
+        animation: backgroundColorChange 5s infinite alternate;
+
+        /* background-color: rgba(255, 255, 255, 0.1); */
+        padding: 1.5rem;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .feature-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(138, 43, 226, 0.3);
+      }
+
+      .feature-item::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          var(--accent-color) 0%,
+          transparent 70%
+        );
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .feature-item:hover::before {
+        opacity: 0.1;
+      }
+
+      .blupponomics-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 1.5rem;
+      }
+
+      .blupponomics-item {
+        padding: 1rem;
+        border-radius: 10px;
+        text-align: center;
+        transition: all 0.3s ease;
+      }
+
+      .blupponomics-item:hover {
+        transform: scale(1.05);
+        box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
+      }
+
+      .social-icons {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+      }
+
+      .social-icons a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background-color: var(--secondary-color);
+        color: var(--background-color);
+        border-radius: 50%;
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+      }
+
+      .app-store-logo {
+        width: 32px;
+        height: 32px;
+      }
+      .social-icons a:hover {
+        background-color: var(--primary-color);
+        color: var(--text-color);
+        transform: translateY(-3px) rotate(360deg);
+        box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+      }
+
+      .animated-text {
+        animation: colorChange 5s infinite alternate;
+      }
+
+      .animated-background {
+        animation: backgroundColorChange 5s infinite alternate;
+      }
+      @keyframes colorChange {
+        0% {
+          color: var(--text-color);
+        }
+        50% {
+          color: var(--accent-color);
+        }
+        100% {
+          color: var(--secondary-color);
+        }
+      }
+      @keyframes backgroundColorChange {
+        0% {
+          background-color: var(--accent-color);
+        }
+        50% {
+          background-color: var(--secondary-color);
+        }
+        100% {
+          background-color: var(--text-color);
+        }
+      }
+
+      .floating {
+        animation: float 3s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+        100% {
+          transform: translateY(0px);
+        }
+      }
+
+      .hero-logo {
+        width: 200px;
+        height: 200px;
+        margin: 0 auto 2rem;
+      }
+
+      .hero-logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        animation: rotate 20s linear infinite;
+      }
+
+      @keyframes rotate {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .section-content {
+          padding: 1.5rem;
+        }
+
+        nav {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .nav-links {
+          margin-top: 1rem;
+        }
+
+        .features-grid,
+        .blupponomics-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-logo {
+          width: 150px;
+          height: 150px;
+        }
+
+        .split-background .left,
+        .split-background .right {
+          width: 100%;
+          height: 100%;
+        }
+
+        .split-background img {
+          height: 100%;
+        }
+      }
+      @media (max-width: 480px) {
+        .hero {
+          height: fit-content;
+        }
+        .hero h1 {
+          font-size: 1.2rem;
+        }
+        .hero-content {
+          border-radius: 1rem;
+          margin-top: 3rem;
+        }
+
+        header,
+        nav {
+          padding: 0;
+          gap: 0;
+        }
+        .nav-links {
+          display: none;
+        }
+        .hero-content p {
+          text-align: center;
+        }
+        .hero-btns {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 1rem;
+        }
+        .blupponomics h2,
+        .community h2 {
+          font-size: 1.7rem;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="logo">
+          <img src="./logo2.png" alt="BLUPPO Logo" />
+        </div>
+        <div class="nav-links">
+          <a href="#features">Features</a>
+          <a href="#blupponomics">Blupponomics</a>
+          <a href="#community">Community</a>
+        </div>
+      </nav>
+    </header>
+
+    <section id="hero" class="section hero">
+      <div class="sliding-background">
+        <img src="./2.png" alt="BLUPPO dining" />
+        <img src="./5.png" alt="BLUPPO on bed" />
+        <img src="./3.png" alt="BLUPPO portrait" />
+        <img src="./5.png" alt="BLUPPO on bed" />
+        <img src="./4.png" alt="BLUPPO in carriage" />
+        <img src="./5.png" alt="BLUPPO on bed" />
+      </div>
+      <div class="section-content hero-content">
+        <div class="hero-logo">
+          <!-- <img src="./logo2.png" alt="BLUPPO Shield Logo" /> -->
+          <img src="./logo4.png" alt="BLUPPO Shield Logo" />
+          <!-- <img src="./logo3.png" alt="BLUPPO Shield Logo" /> -->
+        </div>
+        <h1 class="animated-text">Welcome to BLUPPO</h1>
+        <p class="floating">
+          The Future of Memecoins:
+          <span class="animated-text">Fun, Rewarding, and Revolutionary</span>
+        </p>
+        <div class="hero-btns">
+          <a href="#features" class="btn">Explore Features</a>
+          <a href="#community" class="btn">Join Community</a>
+        </div>
+        <div class="contract-address-container">
+          <h2>Contract Address</h2>
+          <p class="animated-text">Coming Soon</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="section features">
+      <div class="split-background">
+        <div class="left">
+          <img src="./2.png" alt="BLUPPO dining" />
+          <img src="./5.png" alt="BLUPPO on bed" />
+          <img src="./3.png" alt="BLUPPO portrait" />
+          <img src="./5.png" alt="BLUPPO on bed" />
+          <img src="./4.png" alt="BLUPPO in carriage" />
+          <img src="./5.png" alt="BLUPPO on bed" />
+        </div>
+        <div class="right">
+          <img src="./2.png" alt="BLUPPO dining" />
+          <img src="./5.png" alt="BLUPPO on bed" />
+          <img src="./3.png" alt="BLUPPO portrait" />
+          <img src="./5.png" alt="BLUPPO on bed" />
+          <img src="./4.png" alt="BLUPPO in carriage" />
+          <img src="./5.png" alt="BLUPPO on bed" />
+        </div>
+      </div>
+      <div class="section-content features-content">
+        <h2>Features</h2>
+        <div class="features-grid">
+          <div class="feature-item">
+            <h3 class="animated-text">Community Driven</h3>
+            <p>
+              BLUPPO is powered by its vibrant and engaged community. Join us in
+              shaping the future of memecoins and be part of a revolutionary
+              ecosystem.
+            </p>
+          </div>
+          <div class="feature-item">
+            <h3 class="animated-text">Innovative Technology</h3>
+            <p>
+              Built on cutting-edge blockchain technology, BLUPPO ensures
+              unparalleled security and efficiency. Experience the future of
+              digital transactions.
+            </p>
+          </div>
+          <div class="feature-item">
+            <h3 class="animated-text">Rewarding Ecosystem</h3>
+            <p>
+              Participate in our ecosystem and earn rewards. BLUPPO offers
+              exciting opportunities for growth and profit in the world of
+              cryptocurrency.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="blupponomics" class="section blupponomics">
+      <div class="split-background">
+        <div class="left">
+          <img src="./2.png" alt="BLUPPO dining" />
+          <img src="./5.png" alt="BLUPPO on bed" />
+          <img src="./3.png" alt="BLUPPO portrait" />
+          <img src="./5.png" alt="BLUPPO on bed" />
+          <img src="./4.png" alt="BLUPPO in carriage" />
+          <img src="./5.png" alt="BLUPPO on bed" />
+        </div>
+        <div class="right">
+          <img src="./2.png" alt="BLUPPO dining" />
+          <img src="./5.png" alt="BLUPPO on bed" />
+          <img src="./3.png" alt="BLUPPO portrait" />
+          <img src="./5.png" alt="BLUPPO on bed" />
+          <img src="./4.png" alt="BLUPPO in carriage" />
+          <img src="./5.png" alt="BLUPPO on bed" />
+        </div>
+      </div>
+      <div class="section-content blupponomics-content">
+        <h2>Blupponomics</h2>
+        <div class="blupponomics-grid">
+          <div class="blupponomics-item">
+            <h3 class="animated-text">Ticker</h3>
+            <p>$BLUP</p>
+          </div>
+          <div class="blupponomics-item">
+            <h3 class="animated-text">Total Supply</h3>
+            <p>1 Billion BLUP</p>
+          </div>
+          <div class="blupponomics-item">
+            <h3 class="animated-text">Taxes</h3>
+            <p>0/0 Taxes</p>
+          </div>
+          <div class="blupponomics-item">
+            <h3 class="animated-text">Contract</h3>
+            <p>Renounced</p>
+          </div>
+          <div class="blupponomics-item">
+            <h3 class="animated-text">Liquidity</h3>
+            <p>Burnt</p>
+          </div>
+          <div class="blupponomics-item">
+            <h3 class="animated-text">Launch</h3>
+            <p>Fair Launch on App Store</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="community" class="section">
+      <div class="sliding-background reverse">
+        <img src="./2.png" alt="BLUPPO dining" />
+        <img src="./5.png" alt="BLUPPO on bed" />
+        <img src="./3.png" alt="BLUPPO portrait" />
+        <img src="./5.png" alt="BLUPPO on bed" />
+        <img src="./4.png" alt="BLUPPO in carriage" />
+        <img src="./5.png" alt="BLUPPO on bed" />
+      </div>
+      <div class="section-content community community-content">
+        <h2>Join the BLUPPO Community</h2>
+        <p class="floating">
+          Be part of the revolution. Connect, share, and grow with fellow BLUPPO
+          enthusiasts.
+        </p>
+        <div class="social-icons">
+          <a href="#" aria-label="Twitter">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path
+                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+              />
+            </svg>
+          </a>
+          <a href="#" aria-label="Telegram">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2s-.21-.05-.3-.03c-.14.03-2.29 1.45-6.46 4.26-.61.42-1.16.63-1.65.61-.54-.01-1.58-.31-2.35-.57-.95-.32-1.7-.49-1.63-.98.04-.26.32-.53.86-.82 3.37-1.47 5.61-2.45 6.74-2.94 3.21-1.41 3.87-1.65 4.31-1.66.09 0 .31.02.45.12.13.09.17.22.18.34 0 .1.01.22 0 .35z"
+              /></svg
+          ></a>
+          <a href="#" aria-label="Discord">
+            <img class="app-store-logo" src="./logo.png" />
+          </a>
+        </div>
+        <div class="hero-logo">
+          <img src="./logo3.png" alt="BLUPPO Winged Logo" />
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
